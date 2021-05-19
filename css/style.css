@@ -1,22 +1,105 @@
+/*css for non-scrolling elements*/
+
+#title{
+  font-family:Vast Shadow;
+  text-shadow: 4px 4px 4px #aaa;
+  font-size:10em;
+  text-align: center;
+  margin:auto;
+}
+
 #titleSlide{
   height:100vh;
+  background-color: white;
+}
+
+#titletype {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 100px;
+}
+
+.impactText {
+  margin: auto 14vw auto 10vw;
+  height:50vh;
+}
+
+/*css for the readability calculations*/
+
+#readableCalcs{
+  table-layout: fixed;
+  width:70vw;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: top;
+  border-collapse: collapse;
+  
+/*  overflow-y: auto;
+  overflow-x: auto;*/
+}
+
+#readableCalcs td{
+  vertical-align: top;
+  overflow: auto;
+}
+
+.typeArea{
+  max-height: 40vh;
+/*  overflow: auto;*/
+  display: block;
+  overflow-y: auto;
+  font-size: .66em;
+}
+
+.calcArea{
+  display: table-cell;
+  font-size: 1.22em;
+  vertical-align: top;
 }
 
 
-.gridLabel{
-  fill: pink;
-  font-size: x-small;
+#charNum {
+  float:right;
+  text-align:right;
+  /*position: absolute;*/
+  /*top: 75%;*/
+/*  vertical-align: top;
+  font-size: 1em;*/
+}
+/*section two*/
+
+
+#charNumTwo {
+  float:left;
+  text-align:left;
+  /*position: absolute;*/
+  /*top: 75%;*/
+/*  vertical-align: top;
+  font-size: 1em;*/
 }
 
-.gridLabel1{
-  fill: darkgrey;
-  font-size: small;
+#calcTitlesTwo {
+  text-align:center;
 }
 
-.gridLabel2{
-  fill: darkgrey;
-  font-size: medium;
+#fin{
+  font-family: 'Open Sans'
 }
+
+/*#readableOne {
+  width: 40%;
+  float: left;
+  font-size: .66em;
+  overflow-y: auto;
+}*/
+
+/*#readableTwo {
+  width: 40%;
+  height: 35%;
+  float: right;
+  font-size: .66em;
+  overflow-y: auto;
+}*/
 
 /*#topbar{
   fill:black;
@@ -32,52 +115,196 @@
 }*/
 
 body{
-  max-width: 900px;
-  margin: 0px auto;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: white;
 }
 
 h1{
   margin: 50px;
   font-size: 200px;
+  font-family: 'Domine', serif;
 }
 
 h1, h2{
   text-align: center;
+  font-family: 'Domine', serif;
+}
+
+h3{
+  font-family: 'Domine', serif;
+  text-align: center;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
 }
 
 
 #container{
+/*  max-width: 80vw;
+  margin: 0.5vw auto;*/
   position: relative;
+  background-color: grey;
 }
 
 #sections{
-  width: 340px;
+  width: 30vw;
+  margin-left: 10vw;
 }
 
 #sections > div{
   background: white;
-  opacity: .2;
-  margin-bottom: 200px;
+  opacity: .05;
+  margin-bottom: 25vh;
 }
 #sections > div:last-child{
-  margin-bottom: 200px;
+  margin-bottom: 10vh;
 }
 #sections > div.graph-scroll-active{
   opacity: 1;
   background-color: pink;
 }
 
+
+/*  added top % here to bump graph down a bit*/
 #graph{
-  margin-left: 40px;
-  width: 500px;
+  margin-right: 10vw;
+  margin-left: 42.5vw;
+  width: 42vw;
   position: -webkit-sticky;
   position: sticky;
-/*  added top % here to bump graph down a bit*/
-  top: 10%;
-  float: right;
+  top: 5%;
+  float: left;
+  font-family: 'Open Sans', sans-serif;
 }
 
+/*for keynote vid*/
+/*---*/
+/*#sections{
+  visibility: hidden;
+}
+
+#graph{
+  margin-right: 27.5vw;
+  margin-left: 27.5vw;
+  width: 42vw;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 12%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#readableCalcs{
+  visibility: hidden;
+  }
+
+#title{
+  font-family:Vast Shadow;
+  text-shadow: 4px 4px 4px #aaa;
+  font-size:18em;
+  text-align: center;
+  margin:18% auto auto auto;
+}
+
+#nameText{
+  opacity: 0;
+  transition: opacity 5s ease 0s;
+}
+
+.impactText {
+  margin: auto 10vw auto 10vw;
+  height:50vh;
+}*/
+
+/*end keynote vid*/
+
+
+/*widescreen*/
+@media (max-width: 3440px)  {
+/*#graph{
+  margin-right: 10vw;
+  margin-left: 42.5vw;
+  width: 40vw;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 5%; 
+  float: left;
+}
+
+#sections{
+  width: 30vw;
+  margin-left: 10vw;
+}*/
+
+#sections > div{
+  background: white;
+  opacity: .05;
+  margin-bottom: 25vh;
+}
+#sections > div:last-child{
+  margin-bottom: 10vh;
+}
+#sections > div.graph-scroll-active{
+  opacity: 1;
+  /*background-color: pink;*/
+}
+
+  pre{
+    overflow: hidden;
+  }
+
+  h1{
+    margin: 10px;
+  }
+}
+
+
+
+
+
+/*laptop upto widescreen*/
+@media (max-width: 1680px)  {
+/*#graph{
+  margin-right: 10vw;
+  margin-left: 42.5vw;
+  width: 47.5vw;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 5%; 
+  float: left;
+}*/
+
+#sections{
+  width: 30vw;
+  margin-left: 10vw;
+}
+
+#sections > div{
+  background: white;
+  opacity: .05;
+  margin-bottom: 25vh;
+}
+#sections > div:last-child{
+  margin-bottom: 10vh;
+}
+#sections > div.graph-scroll-active{
+  opacity: 1;
+  /*background-color: pink;*/
+}
+
+  pre{
+    overflow: hidden;
+  }
+
+  h1{
+    margin: 10px;
+  }
+}
+
+
+
+
+/*mobile*/
 @media (max-width: 925px)  {
   #graph{
     width: 100%;
@@ -88,7 +315,7 @@ h1, h2{
   #sections{
     width: auto;
     position: relative;
-    margin: 0px auto;
+    margin: 0px auto; 
   }
 
   #sections > div{
@@ -106,11 +333,6 @@ h1, h2{
   h1{
     margin: 10px;
   }
-}
-
-
-circle{
-  fill: steelblue;
 }
 
 .mono{

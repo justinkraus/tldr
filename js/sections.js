@@ -195,14 +195,15 @@ function render(){
   .style("stroke-dasharray", function(d){return (d.dasharray)})
 
   // gridlabels dataset
-  var gridLabelData = [{"group": "level" ,"labelNum": 1, "x": 0, "y": .5, "fill": "darkgrey", "fontsize": ".66em", "text": "Post-graduate"},
-                       {"group": "level" ,"labelNum": 2, "x": 1, "y": .5, "fill": "darkgrey", "fontsize": ".66em", "text": "Graduate"},
-                       {"group": "level" ,"labelNum": 3, "x": 2, "y": .5, "fill": "darkgrey", "fontsize": ".66em", "text": "College"},
-                       {"group": "level" ,"labelNum": 4, "x": 3, "y": .5, "fill": "darkgrey", "fontsize": ".66em", "text": "H.S. Senior"},
-                       {"group": "level" ,"labelNum": 5, "x": 4, "y": .5, "fill": "darkgrey", "fontsize": ".66em", "text": "H.S. Freshman"},
-                       {"group": "level" ,"labelNum": 6, "x": 5, "y": .5, "fill": "darkgrey", "fontsize": ".66em", "text": "Middle School"},
+  // keynote, changed fontsize from .66 to 1em 
+  var gridLabelData = [{"group": "level" ,"labelNum": 1, "x": 0, "y": .5, "fill": "darkgrey", "fontsize": "1em", "text": "Post-graduate"},
+                       {"group": "level" ,"labelNum": 2, "x": 1, "y": .5, "fill": "darkgrey", "fontsize": "1em", "text": "Graduate"},
+                       {"group": "level" ,"labelNum": 3, "x": 2, "y": .5, "fill": "darkgrey", "fontsize": "1em", "text": "College"},
+                       {"group": "level" ,"labelNum": 4, "x": 3, "y": .5, "fill": "darkgrey", "fontsize": "1em", "text": "H.S. Senior"},
+                       {"group": "level" ,"labelNum": 5, "x": 4, "y": .5, "fill": "darkgrey", "fontsize": "1em", "text": "H.S. Freshman"},
+                       {"group": "level" ,"labelNum": 6, "x": 5, "y": .5, "fill": "darkgrey", "fontsize": "1em", "text": "Middle School"},
                        {"group": "danger" ,"labelNum": 7, "x": 2.5, "y": 1.2, "fill": "Coral", "fontsize": "1.25em", "text": "Readable"},
-                       {"group": "danger" ,"labelNum": 7, "x": 2.5, "y": 1.4, "fill": "Coral", "fontsize": ".66em", "text": "Threshold for General Population"},]
+                       {"group": "danger" ,"labelNum": 7, "x": 2.5, "y": 1.4, "fill": "Coral", "fontsize": ".9em", "text": "Threshold for General Population"},]
 
   svg1.selectAll('g')
   .select('g')
@@ -224,10 +225,10 @@ function render(){
    var gridSelect = svg1.selectAll(".grid")
 
     // grid opacity
-    var gridOP = [0, 1, 1, 1, 1]
+    var gridOP = [0, 1, 1, 1, 0, 0]
     // readability text description opacity array
-    // keynote change 1st value from 1 to 0
-    var readableOP = [0, 0, 0, 0, 0]
+    // keynote change 1st value from 1 to 0, reveresed
+    var readableOP = [1, 0, 0, 0, 0, 0]
 
 
   // scrolling functionality
@@ -249,11 +250,12 @@ function render(){
           .transition();
 
         // Readable Title Transitions
-          // keynote, change 1st opacity to 1
-          var readabletitleOP = [0, 1, 1, 1, 1]
+          // keynote, change 1st opacity to 1, reveresed
+          var readabletitleOP = [1, 1, 1, 1, 1]
           var readabletitleSize = ['1.5em', '1em', '1em', '1em', '1em']
 
           var moreReadableX = [[INNER_WIDTH/6 * 4],
+                               [INNER_WIDTH/6 * 5],
                                [INNER_WIDTH/6 * 5],
                                [INNER_WIDTH/6 * 5],
                                [INNER_WIDTH/6 * 5]]
@@ -261,14 +263,17 @@ function render(){
           var moreReadableY = [INNER_HEIGHT/3,
                               (INNER_HEIGHT/10 * 9) + (INNER_HEIGHT/10 * 1.5),
                               (INNER_HEIGHT/10 * 9) + (INNER_HEIGHT/10 * 1.5),
+                              (INNER_HEIGHT/10 * 9) + (INNER_HEIGHT/10 * 1.5),
                               (INNER_HEIGHT/10 * 9) + (INNER_HEIGHT/10 * 1.5)]
 
           var lessReadableX = [[INNER_WIDTH/6 * 2],
                                [INNER_WIDTH/6 * 1],
                                [INNER_WIDTH/6 * 1],
+                               [INNER_WIDTH/6 * 1],
                                [INNER_WIDTH/6 * 1]]
 
           var lessReadableY = [INNER_HEIGHT/3,
+                              (INNER_HEIGHT/10 * 9) + (INNER_HEIGHT/10 * 1.5),
                               (INNER_HEIGHT/10 * 9) + (INNER_HEIGHT/10 * 1.5),
                               (INNER_HEIGHT/10 * 9) + (INNER_HEIGHT/10 * 1.5),
                               (INNER_HEIGHT/10 * 9) + (INNER_HEIGHT/10 * 1.5)]
@@ -278,25 +283,25 @@ function render(){
          var lessReadable = svg1.selectAll('#lessReadable')
 
          moreReadable.transition()
-            //keynote change
-            // .duration(500)
+            //keynote change, reveresed
+            .duration(500)
             .style('opacity', readabletitleOP[i])
             .attr('font-size', readabletitleSize[i])
             .attr("x", INNER_WIDTH/6 * 5)
             .attr("y", (INNER_HEIGHT/10 * 9) + (INNER_HEIGHT/10 * 1.5))
-            //keynote change
-            // .attr("x", moreReadableX[i])
-            // .attr("y", moreReadableY[i])
+            //keynote change, reveresed
+            .attr("x", moreReadableX[i])
+            .attr("y", moreReadableY[i])
             .transition();
 
          lessReadable.transition()
-            //keynote change
-            // .duration(500)
+            //keynote change, reveresed
+            .duration(500)
             .attr("x", INNER_WIDTH/6 * 1)
             .attr("y", (INNER_HEIGHT/10 * 9) + (INNER_HEIGHT/10 * 1.5))
-            //keynote change
-            // .attr("x", lessReadableX[i])
-            // .attr("y", lessReadableY[i])
+            //keynote change, reveresed
+            .attr("x", lessReadableX[i])
+            .attr("y", lessReadableY[i])
             .style('opacity', readabletitleOP[i])
             .attr('font-size', readabletitleSize[i])
           .transition();
@@ -312,13 +317,13 @@ function render(){
         // Set opacity values 
 
         // Opacity of news Sources
-        var newsOpacity = [0, 1, 1, 1]
-        var newsBeforeOpacity = [0, .1, 0, 0]
+        var newsOpacity = [0, 1, 1, 1, 0, 0]
+        var newsBeforeOpacity = [0, .1, 0, 0, 0, 0]
         // Opacity of secondary sources
-        var secondaryOpacity = [0, 0, 1, 1]
-        var secondaryBeforeOpacity = [0, 0, .1, 0]
+        var secondaryOpacity = [0, 0, 1, 1, 0, 0]
+        var secondaryBeforeOpacity = [0, 0, .1, 0, 0, 0]
         // Opacity of Social Media
-        var domainOP = [0, 0, 0, 1]
+        var domainOP = [0, 0, 0, 1, 0, 0]
 
 
         // Group 1 - newspapers
@@ -468,9 +473,9 @@ function render(){
 
         var insImg = svg1.select('#IP')
 
-        insImg.transition().duration(3000)
+        insImg.transition().duration(1500)
             .style('opacity', secondaryOpacity[i])
-            .transition().duration(1500)
+            .transition().duration(3000)
             .attr("x", insPos);
 
         // Insurance Policies Before
@@ -490,12 +495,12 @@ function render(){
 
         var socialImg = svg1.selectAll('.group3')
 
-        socialImg.transition().duration(4500)
+        socialImg.transition().duration(1500)
             // .attr("x", socialPos)
             .style('opacity', secondaryOpacity[i])
             //keynote
-            // remove the .ease for normal viz
-            .ease(d3.easeExpIn)
+            // remove the .ease for normal viz, reversed (decided to keep it)
+            // .ease(d3.easeExpIn)
           .transition();
 
         var domainImg = svg1.selectAll('.group4')
@@ -505,6 +510,14 @@ function render(){
             .style('opacity', domainOP[i])
           .transition();
 
+
+      if (document.getElementById('container-1-5').className == "graph-scroll-active") {
+          var allElem = svg1.selectAll('*')
+
+          allElem.transition().duration(1500)
+          .style('opacity', 0)
+          .transition();
+      }
 
       })
 
@@ -604,7 +617,7 @@ svg2.append("text")
 svg2.append("text")
     // .attr("text-anchor", "end")
     .attr("x", 0)
-    .attr("y", 0-margin2.top/4)
+    .attr("y", 0-margin2.top/2)
     .text("High School Senior Reading Comprehension")
     .attr("font-family", "Domine")
     .style('font-size', "1.5em")
@@ -780,6 +793,10 @@ if (document.getElementById('container-2-1').className == "graph-scroll-active")
     d3.selectAll(".barRect")
     .remove()
 
+    d3.selectAll(".barLegend")
+    .remove()
+    
+
      // x axis
     var x2 = d3.scaleBand()
       .range([ 0, INNER_WIDTH2 ])
@@ -876,7 +893,7 @@ if (document.getElementById('container-2-1').className == "graph-scroll-active")
     svg2.append("text")
         // .attr("text-anchor", "end")
         .attr("x", 0)
-        .attr("y", 0-margin2.top/4)
+        .attr("y", 0-margin2.top/2)
         .text("High School Seniors Who Read for Fun")
         .attr("font-family", "Domine")
         .style('font-size', "1.5em")
@@ -986,7 +1003,7 @@ if (document.getElementById('container-2-1').className == "graph-scroll-active")
     .attr("text-anchor", "middle")
     .attr("x", INNER_WIDTH2/2)
     .attr("y", INNER_HEIGHT2+ (margin2.bottom/1.5) )
-    .text("Content Diversity")
+    .text("Media Variety")
     .style('font-size', "1.25em")
     .attr("class", "barGrid");
 
@@ -1008,37 +1025,39 @@ if (document.getElementById('container-2-1').className == "graph-scroll-active")
     svg2.append("text")
         // .attr("text-anchor", "end")
         .attr("x", 0)
-        .attr("y", 0-margin2.top/4)
-        .text("High School Student Reading Proficiency by Content Diversity")
+        .attr("y", 0-margin2.top/2)
+        .text("High School Student Reading Proficiency by Media Variety")
         .attr("font-family", "Domine")
         .style('font-size', "1.5em")
         .attr("class", "barGrid");
 
-
-    svg2.append("rect").attr("x",INNER_WIDTH2 + margin2.right/8).attr("y",INNER_HEIGHT2/4).attr("width", 80).attr("height", 100).style("fill", "SteelBlue").attr("class", "barLegend")
-    svg2.append("rect").attr("x",INNER_WIDTH2 + margin2.right/8).attr("y",INNER_HEIGHT2/2).attr("width", 80).attr("height", 100).style("fill", "Crimson").attr("class", "barLegend")
-    // svg2.append("text").attr("x", INNER_WIDTH2 + margin2.right/8).attr("y", ((INNER_HEIGHT2/4) + 50)).text("% Above Basic").style("font-size", "15px").attr("alignment-baseline","middle")
+  // legends, originally in keynote but now in side-text
+    // svg2.append("rect").attr("x",INNER_WIDTH2 + margin2.right/8).attr("y",INNER_HEIGHT2/4).attr("width", 80).attr("height", 100).style("fill", "SteelBlue").attr("class", "barLegend").style("opacity", 0)
+    // svg2.append("rect").attr("x",INNER_WIDTH2 + margin2.right/8).attr("y",INNER_HEIGHT2/2).attr("width", 80).attr("height", 100).style("fill", "Crimson").attr("class", "barLegend").style("opacity", 0)
+    // // svg2.append("text").attr("x", INNER_WIDTH2 + margin2.right/8).attr("y", ((INNER_HEIGHT2/4) + 50)).text("% Above Basic").style("font-size", "15px").attr("alignment-baseline","middle")
     
-    svg2.append("text")
-    .attr("x", INNER_WIDTH2 + margin2.right/3.5)
-    .attr("y",((INNER_HEIGHT2/4) + 50))
-    .text("Above Basic")
-    .style("font-size", ".9em")
-    .style("fill", "white")
-    .attr("alignment-baseline","middle")
-    .attr("class", "barLegend")
-    .call(wrap, 43)
+    // svg2.append("text")
+    // .attr("x", INNER_WIDTH2 + margin2.right/3.5)
+    // .attr("y",((INNER_HEIGHT2/4) + 50))
+    // .text("Above Basic")
+    // .style("font-size", ".9em")
+    // .style("fill", "white")
+    // .attr("alignment-baseline","middle")
+    // .attr("class", "barLegend")
+    // .style("opacity", 0)
+    // .call(wrap, 43)
 
 
-    svg2.append("text")
-    .attr("x", INNER_WIDTH2 + margin2.right/3.5)
-    .attr("y",((INNER_HEIGHT2/2) + 50))
-    .text("Basic or Below")
-    .style("font-size", ".9em")
-    .style("fill", "white")
-    .attr("alignment-baseline","middle")
-    .attr("class", "barLegend")
-    .call(wrap, 60);
+    // svg2.append("text")
+    // .attr("x", INNER_WIDTH2 + margin2.right/3.5)
+    // .attr("y",((INNER_HEIGHT2/2) + 50))
+    // .text("Basic or Below")
+    // .style("font-size", ".9em")
+    // .style("fill", "white")
+    // .attr("alignment-baseline","middle")
+    // .attr("class", "barLegend")
+    // .style("opacity", 0)
+    // .call(wrap, 60);
 
   }
 
@@ -1123,7 +1142,7 @@ if (document.getElementById('container-2-1').className == "graph-scroll-active")
   var lolliLabelSelect = svg2.selectAll(".lolliLabel")
 
   lolliLabelSelect.transition().duration(4500)
-    .delay(function(d,i){ return 200*i; })
+    .delay(function(d,i){ return 100*i; })
     .style('opacity', lolliOP[i])
     .ease(d3.easeExpIn);
 
@@ -1144,7 +1163,7 @@ if (document.getElementById('container-2-1').className == "graph-scroll-active")
 
   var barLegendSelect = svg2.selectAll(".barLegend")
 
-  barLegendSelect.transition().duration(500)
+  barLegendSelect.transition().duration(4000)
       .style('opacity', barOP[i])
       .ease(d3.easeExpIn)
     .transition();
@@ -1292,10 +1311,18 @@ svg3.append('text')
 
 
 // comprehension level titles
+// keynote change, added back in and refined
 
-var leveltitles = [{"levelNumber":1, "text": "Linguistic Representation"},
-                 {"levelNumber":2, "text": "Propostional Abstraction"},
-                 {"levelNumber":3, "text": "Situation Model"}]
+// var leveltitles = [{"levelNumber":1, "text": "Linguistic Representation"},
+//                  {"levelNumber":2, "text": "Propostional Abstraction"},
+//                  {"levelNumber":3, "text": "Situation Model"}]
+
+var leveltitles = [{"levelNumber":1, "text": "I. Define"},
+                 {"levelNumber":2, "text": "II. Connect"},
+                 {"levelNumber":3, "text": "III. Integrate"}]
+
+// keynote change
+// removed titles, reversed
 
 svg3.selectAll('text')
 .select('text')
@@ -1307,16 +1334,21 @@ svg3.selectAll('text')
 .attr("x", topRightX)
 .attr("y", function(d){return topY - (squareSpace * d.levelNumber) })
 .attr("dy", ".9em")
-.style('font-size', "1.25em")
+.style('font-size', "1.5em")
 .style('opacity', 0)
 .text(function(d){return d.text})
 
 
 // comprehension level definitions
 
-var defs = [{"levelNumber":1, "text": "Words and sentence structure"},
-                 {"levelNumber":2, "text": "How words relate to one another"},
-                 {"levelNumber":3, "text": "Integrate with prior knowledge"}]
+// keynote change, refined
+// var defs = [{"levelNumber":1, "text": "Words and sentence structure"},
+//                  {"levelNumber":2, "text": "How words relate to one another"},
+//                  {"levelNumber":3, "text": "Integrate with prior knowledge"}]
+
+var defs = [{"levelNumber":1, "text": "Define words and how they relate to one another"},
+                 {"levelNumber":2, "text": "Connect words to form ideas"},
+                 {"levelNumber":3, "text": "Integrate new ideas with prior knowledge"}]
 
 svg3.selectAll('text')
 .select('text')
@@ -1495,12 +1527,15 @@ var gs4 = d3.graphScroll()
 
 //polygon opacity transitions
 
-poly1OP = [1,1,1,1,1,1,1,1,0]
-poly23OP = [1,.66,.66,.2,0,0,0,0,0]
-ploy4OP = [1,.66,.2,.66,0,0,0,0]
+poly1OP = [0,1,1,1,1,1,1,1,0,0]
+poly23OP = [0,1,.66,.66,.2,0,0,0,0,0]
+ploy4OP = [0,1,.66,.2,.66,0,0,0,0]
+poly5OP = [0,1,1,1,1,0,0,0,0]
+
 
 // polygon size transition
 poly1size = [
+             [[topLeftX, topY - (squareSpace * 1.65)], [topRightX, topY - (squareSpace * 1.65)], [botRightX, botY - (squareSpace * 1.65)], [botLeftX, botY - (squareSpace * 1.65)], [topLeftX, topY - (squareSpace * 1.65)]],
              [[topLeftX, topY - (squareSpace * 1.65)], [topRightX, topY - (squareSpace * 1.65)], [botRightX, botY - (squareSpace * 1.65)], [botLeftX, botY - (squareSpace * 1.65)], [topLeftX, topY - (squareSpace * 1.65)]],
              [[topLeftX, topY + poly1Yoffset], [topRightX, topY + poly1Yoffset], [botRightX, botY + poly1Yoffset], [botLeftX, botY + poly1Yoffset], [topLeftX, topY + poly1Yoffset]],
              [[topLeftX, topY + poly1Yoffset], [topRightX, topY + poly1Yoffset], [botRightX, botY + poly1Yoffset], [botLeftX, botY + poly1Yoffset], [topLeftX, topY + poly1Yoffset]],
@@ -1514,6 +1549,7 @@ poly1size = [
 
 poly5size = [
               [[topLeftX, topY - (squareSpace * 2.35)], [topRightX, topY - (squareSpace * 2.35)], [botRightX, botY - (squareSpace * 2.35)], [botLeftX, botY - (squareSpace * 2.35)], [topLeftX, topY - (squareSpace * 2.35)]],
+              [[topLeftX, topY - (squareSpace * 2.35)], [topRightX, topY - (squareSpace * 2.35)], [botRightX, botY - (squareSpace * 2.35)], [botLeftX, botY - (squareSpace * 2.35)], [topLeftX, topY - (squareSpace * 2.35)]],
               [[topLeftX, topY - (squareSpace * 4) - poly1Yoffset], [topRightX, topY - (squareSpace * 4) - poly1Yoffset], [botRightX, botY - (squareSpace * 4) - poly1Yoffset], [botLeftX, botY - (squareSpace * 4) - poly1Yoffset], [topLeftX, topY - (squareSpace * 4) - poly1Yoffset]],
               [[topLeftX, topY - (squareSpace * 4) - poly1Yoffset], [topRightX, topY - (squareSpace * 4) - poly1Yoffset], [botRightX, botY - (squareSpace * 4) - poly1Yoffset], [botLeftX, botY - (squareSpace * 4) - poly1Yoffset], [topLeftX, topY - (squareSpace * 4) - poly1Yoffset]],
               [[topLeftX, topY - (squareSpace * 4) - poly1Yoffset], [topRightX, topY - (squareSpace * 4) - poly1Yoffset], [botRightX, botY - (squareSpace * 4) - poly1Yoffset], [botLeftX, botY - (squareSpace * 4) - poly1Yoffset], [topLeftX, topY - (squareSpace * 4) - poly1Yoffset]],
@@ -1524,6 +1560,7 @@ poly5size = [
 // 
 poly2size = [
              [[topLeftX, topY - (squareSpace * 2)], [topRightX, topY - (squareSpace * 2)], [botRightX, botY - (squareSpace * 2)], [botLeftX, botY - (squareSpace * 2)], [topLeftX, topY - (squareSpace * 2)]],
+             [[topLeftX, topY - (squareSpace * 2)], [topRightX, topY - (squareSpace * 2)], [botRightX, botY - (squareSpace * 2)], [botLeftX, botY - (squareSpace * 2)], [topLeftX, topY - (squareSpace * 2)]],
              [[topLeftX, topY - (squareSpace)], [topRightX, topY - (squareSpace)], [botRightX, botY - (squareSpace)], [botLeftX, botY - (squareSpace)], [topLeftX, topY - (squareSpace)]],
              [[topLeftX, topY - (squareSpace)], [topRightX, topY - (squareSpace)], [botRightX, botY - (squareSpace)], [botLeftX, botY - (squareSpace)], [topLeftX, topY - (squareSpace)]],
              [[topLeftX, topY - (squareSpace)], [topRightX, topY - (squareSpace)], [botRightX, botY - (squareSpace)], [botLeftX, botY - (squareSpace)], [topLeftX, topY - (squareSpace)]],
@@ -1533,6 +1570,7 @@ poly2size = [
             ].map(function(d){ return 'M' + d.join(' L ') })
 
 poly4size = [
+             [[topLeftX, topY - (squareSpace * 2)], [topRightX, topY - (squareSpace * 2)], [botRightX, botY - (squareSpace * 2)], [botLeftX, botY - (squareSpace * 2)], [topLeftX, topY - (squareSpace * 2)]],
              [[topLeftX, topY - (squareSpace * 2)], [topRightX, topY - (squareSpace * 2)], [botRightX, botY - (squareSpace * 2)], [botLeftX, botY - (squareSpace * 2)], [topLeftX, topY - (squareSpace * 2)]],
              [[topLeftX, topY - (squareSpace * 3)], [topRightX, topY - (squareSpace * 3)], [botRightX, botY - (squareSpace * 3)], [botLeftX, botY - (squareSpace * 3)], [topLeftX, topY - (squareSpace * 3)]],
              [[topLeftX, topY - (squareSpace * 3)], [topRightX, topY - (squareSpace * 3)], [botRightX, botY - (squareSpace * 3)], [botLeftX, botY - (squareSpace * 3)], [topLeftX, topY - (squareSpace * 3)]],
@@ -1562,13 +1600,14 @@ poly4var.transition().duration(1000)
             .attr('d', poly4size[i]);
 
 poly5var.transition().duration(1000)
-            .style('opacity', ploy4OP[i])
+            .style('opacity', poly5OP[i])
           .transition().duration(1000)
             .attr('d', poly5size[i]);
 
 // polygon title text transitions
 
 poly5titlesize = [
+                [[topY - (squareSpace * 2.35)]],
                 [[topY - (squareSpace * 2.35)]],
                 [[(topY - (squareSpace * 4) - poly1Yoffset) + (botY - (squareSpace * 4) - poly1Yoffset)/3]],
                 [[(topY - (squareSpace * 4) - poly1Yoffset) + (botY - (squareSpace * 4) - poly1Yoffset)/3]],
@@ -1578,6 +1617,7 @@ poly5titlesize = [
 
 poly1titlesize = [
                 [[topY - (squareSpace * 1.65)]],
+                [[topY - (squareSpace * 1.65)]],
                 [[(topY + botY)/2 + (poly1Yoffset/1.75)]],
                 [[(topY + botY)/2 + (poly1Yoffset/1.75)]],
                 [[(topY + botY)/2 + (poly1Yoffset/1.75)]],
@@ -1586,7 +1626,7 @@ poly1titlesize = [
 
 
 // polys 1 and 5 text transition
-fixedtextOP = [0,1,1,1,0,0,0,0,0]
+fixedtextOP = [0,0,1,1,1,0,0,0,0,0]
 
 var polyText = svg3.selectAll(".polytitle")
 
@@ -1603,7 +1643,7 @@ poly1title.transition().duration(500)
 
 //poly 3 title text transition
 
-cititleOP = [1,0,0,0,0,0,0,0,0]
+cititleOP = [0,1,0,0,0,0,0,0,0,0]
 
 var ciText = svg3.selectAll(".cititle")
 
@@ -1613,7 +1653,7 @@ ciText.transition().duration(500)
 
 
 //transition for the level titles
-leveltitlesOP = [0,1,1,1,0,0,0,0,0]
+leveltitlesOP = [0,0,1,1,1,0,0,0,0,0]
 
 var leveltitles = svg3.selectAll(".leveltitle")
 
@@ -1624,7 +1664,7 @@ leveltitles.transition().duration(1500)
 
 //transition for the level definitions
 
-leveldefsOP = [0,1,1,1,0,0,0,0,0]
+leveldefsOP = [0,0,1,1,1,0,0,0,0,0]
 
 var leveldefs = svg3.selectAll(".leveldef")
 
@@ -1635,35 +1675,35 @@ leveldefs.transition().duration(1500)
 
 //animation of pulsating reading comprehension levels
 
-// if (document.getElementById('container-3-2').className == "graph-scroll-active") {
+if (document.getElementById('container-3-2').className == "graph-scroll-active") {
 
-//   var polygons = svg3.selectAll(".polygon")
+  var polygons = svg3.selectAll(".polygon")
 
 
-// // // Floating text array
+// // Floating text array
 
-// // // Floating text function loop 
-// // // create arrays
-//   setTimeout( function() {repeat();}, 4000);
-// //   //chained transition of floating text
-// //   // a take on chained transition to loop https://bl.ocks.org/mbostock/1125997
-//     function repeat(){
+// // Floating text function loop 
+// // create arrays
+  setTimeout( function() {repeat();}, 4000);
+//   //chained transition of floating text
+//   // a take on chained transition to loop https://bl.ocks.org/mbostock/1125997
+    function repeat(){
 
-//     polygons.transition().duration(900)
-//     .delay(function(d,i) { return (i * 900)})
-//     .style('opacity', 0.66)
-//     .transition().duration(100)
-//     .style('opacity', 0.33)
-//     .transition().duration(100)
-//     .style('opacity', 0.66)
-//     .delay(100)
-//     .on("start", repeat);
+    polygons.transition().duration(900)
+    .delay(function(d,i) { return (i * 900)})
+    .style('opacity', 0.66)
+    .transition().duration(100)
+    .style('opacity', 0.33)
+    .transition().duration(100)
+    .style('opacity', 0.66)
+    .delay(100)
+    .on("start", repeat);
 
-//   };
+  };
 
 // // // examples 
 
-// }
+}
 // else {
 //   d3.selectAll(".letters")
 //   .remove()
@@ -1677,7 +1717,7 @@ leveldefs.transition().duration(1500)
 
 
 //lines transitions
-linesOP = [0,0,0,0,1,1,1,1,0]
+linesOP = [0,0,0,0,0,1,1,1,1,0]
 
 var levelexs = svg3.selectAll(".readinglines")
 
@@ -1696,7 +1736,7 @@ linearcirclesOP = [1,1,1,1,1,1,1,1,0]
 
 var linearcircles = svg3.selectAll(".linearcircle")
 
-linearcircles.transition().duration(1500)
+linearcircles.transition().duration(800)
           .style('opacity', linearcirclesOP[i])
           .transition()
            .delay(function(d, i) { return (i * 100) + (d.r); })
@@ -1722,7 +1762,7 @@ var skimcircles = svg3.selectAll(".skimcircle")
 skimcircles.transition().duration(1500)
           .style('opacity', skimcirclesOP[i])
           .transition()
-           .delay(function(d, i) { return (i * 100) + (d.r); })
+           .delay(function(d, i) { return (i * 150) + (d.r); })
            .style("fill", "SteelBlue");
 }
 else {

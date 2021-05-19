@@ -20,6 +20,7 @@
         eventId = Math.random(),
         // original
         // offset = 200
+        // had revised to 300 for keynote, changed back to 200
         offset = 300
 
     function reposition(){
