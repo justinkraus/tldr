@@ -1061,13 +1061,13 @@ if (document.getElementById('container-2-1').className == "graph-scroll-active")
 
   }
 
-  // if (document.getElementById('container-2-4').className == "graph-scroll-active") {
-  //   d3.selectAll(".barGrid")
-  //   .remove()
+  if (document.getElementById('container-2-4').className == "graph-scroll-active") {
+    d3.selectAll(".barGrid")
+    .remove()
 
-  //   d3.selectAll(".barRect")
-  //   .remove()
-  //   }
+    d3.selectAll(".barRect")
+    .remove()
+    }
 
   // Line Graph
   // opacity and transition
@@ -1367,7 +1367,6 @@ svg3.selectAll('text')
 // reading lines on white polygon
 var lines = [[0,1,2,3,4,5,6,7,8,9,10]]
 
-
 svg3.selectAll('g')
     .data(lines)
   .enter().append('g')
@@ -1384,6 +1383,7 @@ svg3.selectAll('g')
         .style("stroke-width", 1.5)
         .style("opacity", 0)
     });
+
 
 // [[topLeftX, topY - (squareSpace * 4)], [topRightX + topRightX/1.5, topY - (squareSpace * 4)], [topRightX + topRightX/1.5, botY], [topLeftX, botY]],
 
@@ -1714,6 +1714,17 @@ if (document.getElementById('container-3-2').className == "graph-scroll-active")
 //   .remove()
 // }
 
+// if (document.getElementById('container-3-4').className == "graph-scroll-active") {
+//   d3.selectAll(".readinglines").remove()
+// }
+
+// if (document.getElementById('container-3-5').className == "graph-scroll-active") {
+
+
+
+
+
+// }
 
 
 //lines transitions
@@ -1721,10 +1732,10 @@ linesOP = [0,0,0,0,0,1,1,1,1,0]
 
 var levelexs = svg3.selectAll(".readinglines")
 
-levelexs.transition().duration(2500)
+levelexs.transition().duration(1500)
             .style('opacity', linesOP[i])
             // keynote possibly remove this for the final version
-            .ease(d3.easeExpIn)
+            // .ease(d3.easeExpIn)
             .transition();
 
 
@@ -1773,14 +1784,14 @@ linearcircles.transition().duration(100)
           .style("fill", "white");
 }
 
-// keynote 
+// keynote, revised
 // remove this for final, messed up drawing lines
 
-if (document.getElementById('keynote_placeholder1').className == "graph-scroll-active") {
-  d3.selectAll(".readinglines")
-  .remove()
+// if (document.getElementById('keynote_placeholder1').className == "graph-scroll-active") {
+//   d3.selectAll(".readinglines")
+//   .remove()
 
-}
+// }
 
 
 })
