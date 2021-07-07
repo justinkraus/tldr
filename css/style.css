@@ -20,7 +20,7 @@
 }
 
 .impactText {
-  margin: auto 14vw auto 10vw;
+  margin: auto 20vw auto 20vw;
   height:50vh;
 }
 
@@ -114,9 +114,18 @@
   z-index: 1;
 }*/
 
+/*font size*/
+$base-font-size: 1em;
+
+/*line height*/
+$base-line-height: 1.5;
+$header-line-height: 1.25;
+
 body{
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: white;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
 }
 
 h1{
@@ -144,7 +153,7 @@ p {
 /*  max-width: 80vw;
   margin: 0.5vw auto;*/
   position: relative;
-  background-color: grey;
+/*  background-color: grey;*/
 }
 
 #sections{
@@ -162,7 +171,7 @@ p {
 }
 #sections > div.graph-scroll-active{
   opacity: 1;
-  background-color: pink;
+/*  background-color: pink;*/
 }
 
 
@@ -176,6 +185,11 @@ p {
   top: 5%;
   float: left;
   font-family: 'Open Sans', sans-serif;
+}
+
+#nameText{
+  opacity: 0;
+  transition: opacity 5s ease 0s;
 }
 
 /*for keynote vid*/
@@ -274,6 +288,53 @@ p {
   float: left;
 }*/
 
+#container{
+  font-size: 90%;
+  }
+
+#sections{
+  width: 30vw;
+  margin-left: 10vw;
+}
+
+#sections > div{
+  background: white;
+  opacity: .05;
+  margin-bottom: 25vh;
+}
+#sections > div:last-child{
+  margin-bottom: 10vh;
+}
+#sections > div.graph-scroll-active{
+  opacity: 1;
+  /*background-color: pink;*/
+}
+
+  pre{
+    overflow: hidden;
+  }
+
+  h1{
+    margin: 10px;
+  }
+}
+
+/*laptop upto widescreen*/
+@media (max-width: 1200px)  {
+#graph{
+  margin-right: 5vw;
+  margin-left: 42.5vw;
+  width: 50vw;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 5%; 
+  float: left;
+}
+
+#container{
+  font-size: 75%;
+  }
+
 #sections{
   width: 30vw;
   margin-left: 10vw;
@@ -304,8 +365,13 @@ p {
 
 
 
-/*mobile*/
+/*tablet*/
 @media (max-width: 925px)  {
+
+  #container{
+  font-size: 90%;
+  }
+
   #graph{
     width: 100%;
     margin-left: 0px;
@@ -319,10 +385,67 @@ p {
   }
 
   #sections > div{
-    background: rgba(255,255,255,.5);
+    background: rgba(255,255,255,.99);
     padding: 10px;
-    border-top: 1px solid;
-    border-bottom: 1px solid;
+/*    border-top: 1px solid;
+    border-bottom: 1px solid;*/
+    margin-bottom: 80vh;
+  }
+
+  #sections > div.graph-scroll-active{
+
+  opacity: 1;
+/*  background-color: lightgrey;*/
+}
+
+  pre{
+    overflow: hidden;
+  }
+
+  h1{
+    margin: 10px;
+  }
+}
+
+.mono{
+  font-family: monospace;
+}
+
+/*svg{
+  background-color: #eee;
+}*/
+
+
+/*mobile*/
+@media (max-width: 600px)  {
+
+  #container{
+  font-size: 70%;
+  }
+
+  .impactText {
+  margin: auto 14vw auto 10vw;
+  height:50vh;
+  font-size: 70%;
+}
+
+  #graph{
+    width: 100%;
+    margin-left: 0px;
+    float: none;
+  }
+
+  #sections{
+    width: auto;
+    position: relative;
+    margin: 0px auto; 
+  }
+
+  #sections > div{
+    background: rgba(255,255,255,.99);
+    padding: 10px;
+/*    border-top: 1px solid;
+    border-bottom: 1px solid;*/
     margin-bottom: 80vh;
   }
 
@@ -339,6 +462,6 @@ p {
   font-family: monospace;
 }
 
-svg{
+/*svg{
   background-color: #eee;
-}
+}*/

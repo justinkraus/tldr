@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" >
+<head>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Domine:wght@700&family=Open+Sans&family=Vast+Shadow&family=Shrikhand&display=swap" rel="stylesheet">
+</head>
+      <body onload="typeWriter();">
+      <table id="readableCalcs">
+        <tr>
+          <td colspan="1" style="width:20%">&nbsp;</td>
+<!--           <td colspan="1" style="width:11%">&nbsp;</td> -->
+          <td colspan="3" style="width:60%"><p style="font-family:Vast Shadow;font-size:4em;text-align: center;margin-bottom:0;margin-top:0;">Readability Calculations</p></td>   
+<!--           <td colspan="1" style="width:11%">&nbsp;</td> -->
+          <td colspan="1" style="width:20%">&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="5" style="width:11%"><p>Shown here are live calculations of readability scores comparing portions of articles in the simplified wikipedia, a version of Wikiedpai with articles that attempt to describe topics in plain English, versus the equivalent topic in the main English wikipedia. Readability scores are computed using the <a href="https://en.wikipedia.org/wiki/Automated_readability_index">Automated Readability Index</a> where the calculation leverages counts of characters, words, sentences to compute an approximate grade level for the text. This intends to illustrate the direct impact readability can have while discussing the same subject.</p>
+          <p><a href="https://justinkraus.github.io/tldr/"><p style="text-align: center;">Thesis Main Site</p></a></p></td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align: right"><h3>Simplified Wikipedia Article<h3></td>
+          <td colspan="1">&nbsp;</td>
+          <td colspan="2" style="text-align: left"><h3>Standard Wikipedia Article<h3></td>
+        </tr>
+        <tr>
+          <td><div class="typeArea" id="typeAreaOne" onload="countChars(this);"></div></td>
+          <td><div class="calcArea" id="charNum"></div></td>
+          <td class="calcArea" id="calcTitlesTwo"><b>Characters<br>Words<br>Sentences<br>Score<br>Grade Level</b></td>
+          <td><div class="calcArea" id="charNumTwo"></div></td>
+          <td><div class="typeArea" id="typeAreaTwo" style="float: left" onload="countCharsTwo(this);"></div></td>
+        </tr>
+      </table>
+</div>
+</div>
+
+<script src="d3v4+jetpack.js"></script>
+<script src="graph-scroll.js"></script>
+<script src="typewriter.js"></script>
+<script src ="js/sections.js"></script>
+<script src ="js/titletyper.js"></script>
+<script>
+
+// write to dom element
+
+var element = document.getElementById('typeAreaOne');
+var elementTwo = document.getElementById('typeAreaTwo');
+
+
+// Text typing
+// lower answer for original formula
+// https://stackoverflow.com/questions/11665484/converting-a-recursive-function-into-an-asynchronous-cps-implementation-javascr
+
+// create sleep function
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// event listener to begin typer function when content is loaded
+window.addEventListener('DOMContentLoaded', () => typer(), false);
+
+// typer function calling, triggers the writing
+async function typer() {
+
+// variables for function
+var start = 0
+var start2 = 0
+
+var textArray = [
+"Earth is the planet we live on. It is the third planet from the Sun. It is the only planet known to have life on it. The Earth formed around 4.5 billion years ago. It is one of four rocky planets on the inside of the Solar System. The other three are Mercury, Venus, and Mars. The large mass of the Sun makes Earth move around it, just as the mass of Earth makes the moon move around it. Earth also turns around in space, so that different parts face the Sun at different times. Earth goes around the Sun once (one year) for every 365​ 1⁄4 times it turns around (one day). Earth is the only planet in the Solar System that has a large amount of liquid water. About 74% of the surface of Earth is covered by liquid or frozen water. Because of this, people sometimes call it the blue planet. Because of its water, Earth is home to millions of species of plants and animals which require water to survive. The things that live on Earth have changed its surface greatly. For example, early cyanobacteria changed the air and gave it oxygen. The living part of Earth's surface is called the biosphere.",
+  "A tree is a tall plant with a trunk and branches made of wood. Trees can live for many years. The oldest tree ever discovered is approximately 5,000 years old and the oldest tree from the UK is about 1,000. The four main parts of a tree are the roots, the trunk, the branches, and the leaves. The roots of a tree are usually under the ground. However, this is not always true. The roots of the mangrove tree are often under water. A single tree has many roots. The roots carry nutrients and water from the ground through the trunk and branches to the leaves of the tree. They can also breathe in air. Sometimes, roots are specialized into aerial roots, which can also provide support, as is the case with the banyan tree. The trunk is the main body of the tree. The trunk is covered with bark which protects it from damage. Branches grow from the trunk. They spread out so that the leaves can get more sunlight. The leaves of a tree are green most of the time, but they can come in many colors, shapes and sizes. The leaves take in sunlight and use water and food from the roots to make the tree grow, and to reproduce. Trees and shrubs take in water and carbon dioxide and give out oxygen with sunlight to form sugars. This is the opposite of what animals do in respiration. Plants also do some respiration using oxygen the way animals do. They need oxygen as well as carbon dioxide to live. Trees are renewable resources because, if cut down, other trees can grow in their place."
+                ]
+var textArrayTwo = [
+"Earth is the third planet from the Sun and the only astronomical object known to harbor life. About 29,2% of Earth's surface is land consisting of continents and islands. The remaining 70.8% is covered with water, mostly by oceans, seas, gulfs, and other salt water bodies, but also by lakes, rivers, and other fresh water, which together constitute the hydrosphere. Much of Earth's polar regions are covered in ice. Earth's outer layer is divided into several rigid tectonic plates that migrate across the surface over many millions of years. Earth's interior remains active with a solid iron inner core, a liquid outer core that generates Earth's magnetic field, and a convective mantle that drives plate tectonics. Earth's atmosphere consists mostly of nitrogen and oxygen. More solar energy is received by tropical regions than polar regions, and is redistributed by atmospheric and ocean circulation. Greenhouse gases also play an important role in regulating the surface temperature. A region's climate is not only determined by latitude, but also by elevation, and by proximity to moderating oceans, among other factors. Severe weather, such as tropical cyclones, thunderstorms, and heat waves, occurs in most areas and has a large impact on life. Earth's gravity interacts with other objects in space, especially the Sun and the Moon, which is Earth's only natural satellite. Earth orbits around the Sun in about 365.25 days. Earth's axis of rotation is tilted with respect to its orbital plane, producing seasons on Earth. The gravitational interaction between Earth and the Moon causes tides, stabilizes Earth's orientation on its axis, and gradually slows its rotation. Earth is the densest planet in the Solar System and the largest and most massive of the four rocky planets.",
+  "In botany, a tree is a perennial plant with an elongated stem, or trunk, supporting branches and leaves in most species. In some usages, the definition of a tree may be narrower, including only woody plants with secondary growth, plants that are usable as lumber or plants above a specified height. In wider definitions, the taller palms, tree ferns, bananas, and bamboos are also trees. Trees are not a taxonomic group but include a variety of plant species that have independently evolved a trunk and branches as a way to tower above other plants to compete for sunlight. Trees tend to be long-lived, some reaching several thousand years old. Trees have been in existence for 370 million years. It is estimated that there are some three trillion mature trees in the world. A tree typically has many secondary branches supported clear of the ground by the trunk. This trunk typically contains woody tissue for strength, and vascular tissue to carry materials from one part of the tree to another. For most trees it is surrounded by a layer of bark which serves as a protective barrier. Below the ground, the roots branch and spread out widely; they serve to anchor the tree and extract moisture and nutrients from the soil. Above ground, the branches divide into smaller branches and shoots. The shoots typically bear leaves, which capture light energy and convert it into sugars by photosynthesis, providing the food for the tree's growth and development. Trees usually reproduce using seeds. Flowers and fruit may be present, but some trees, such as conifers, instead have pollen cones and seed cones. Palms, bananas, and bamboos also produce seeds, but tree ferns produce spores instead. Trees play a significant role in reducing erosion and moderating the climate. They remove carbon dioxide from the atmosphere and store large quantities of carbon in their tissues. Trees and forests provide a habitat for many species of animals and plants. Tropical rainforests are among the most biodiverse habitats in the world. Trees provide shade and shelter, timber for construction, fuel for cooking and heating, and fruit for food as well as having many other uses. In parts of the world, forests are shrinking as trees are cleared to increase the amount of land available for agriculture. Because of their longevity and usefulness, trees have always been revered, with sacred groves in various cultures, and they play a role in many of the world's mythologies."
+                ]
+var speed = 10;
+var pause = 1000;
+
+// for loop to iterate array string
+for(var i=0; i < textArray.length; i++) {
+  // // works for 1
+  // // set the text area blank
+  // document.querySelector('#typeAreaOne').innerHTML = " ";
+  // console.log(i)
+  // console.log(start)
+  // // loop individual characters until entire length
+  // while (start < textArray[i].length) {
+  //   document.querySelector('#typeAreaOne').innerHTML += textArray[i].charAt(start);
+  //   start++;
+  //   await sleep(speed);
+  //     if (start === textArray[i].length){
+  //       await sleep(pause);
+  //       start = 0
+  //       break
+  //     }
+  //   continue
+  //   }
+  // attempt at second
+  document.querySelector('#typeAreaOne').innerHTML = " ";
+  document.querySelector('#typeAreaTwo').innerHTML = " ";
+  while (start2 < textArrayTwo[i].length) {
+    document.querySelector('#typeAreaOne').innerHTML += textArray[i].charAt(start);
+    document.querySelector('#typeAreaTwo').innerHTML += textArrayTwo[i].charAt(start2);
+    start++;
+    start2++;
+    await sleep(speed);
+      if (start2 === textArrayTwo[i].length){
+        await sleep(pause);
+        start = 0
+        start2 = 0
+        break
+      }
+    continue
+    }
+
+  }
+}
+
+// })
+
+
+// original working for a single text string
+// subittle animation
+
+var start1 = 0
+var start2 = 0
+var text1 = " Written English Is Becoming More Readable,         "
+var text2 = "Why Is Reading Comprehension Falling?"
+var speed = 50;
+
+function typeWriter() {
+  if (start1 < text1.length) {
+    document.querySelector('#SubTextOne').innerHTML += text1.charAt(start1);
+    start1++;
+  }
+  else if (start2 < text2.length) {
+    document.querySelector('#SubTextTwo').innerHTML += text2.charAt(start2);
+    start2++;
+  }
+  else {
+    document.querySelector('#nameText').style.opacity = 1;
+  }
+  setTimeout(typeWriter, speed);
+}
+
+          // if (ari <= 1) {
+          //  var grade = "Kindergarten"
+          // }
+          // else if (ari > 1 && ari <= 2 ){
+          //  var grade = "First/Second Grade"
+          // }
+          // else if (ari > 2 && ari <= 3 ){
+          //  var grade = "Third Grade"
+          // }
+          // else if (ari > 3 && ari <= 4 ){
+          //  var grade = "Fourth Grade"
+          // }
+          // else if (ari > 4 && ari <= 5 ){
+          //  var grade = "Fifth Grade"
+          // }
+          // else if (ari > 5 && ari <= 6 ){
+          //  var grade = "Sixth Grade"
+          // }
+          // else if (ari > 6 && ari <= 7 ){
+          //  var grade = "Seventh Grade"
+          // }
+          // else if (ari > 7 && ari <= 8 ){
+          //  var grade = "Eighth Grade"
+          // }
+          // else if (ari > 8 && ari <= 9 ){
+          //  var grade = "Ninth Grade"
+          // }
+          // else if (ari > 8 && ari <= 9 ){
+          //  var grade = "Ninth Grade"
+          // }
+          // else var grade = "something else"
+
+
+function gradeLevel(ari){
+          if (ari <= 1) {
+           return "Kindergarten"
+          }
+          else if (ari > 1 && ari <= 2 ){
+           return"First/Second"
+          }
+          else if (ari > 2 && ari <= 3 ){
+           return "Third"
+          }
+          else if (ari > 3 && ari <= 4 ){
+           return "Fourth"
+          }
+          else if (ari > 4 && ari <= 5 ){
+           return "Fifth"
+          }
+          else if (ari > 5 && ari <= 6 ){
+           return "Sixth"
+          }
+          else if (ari > 6 && ari <= 7 ){
+           return "Seventh"
+          }
+          else if (ari > 7 && ari <= 8 ){
+           return "Eighth"
+          }
+          else if (ari > 8 && ari <= 9 ){
+           return "Ninth"
+          }
+          else if (ari > 8 && ari <= 9 ){
+           return "Ninth"
+          }
+          else if (ari > 9 && ari <= 10 ){
+           return "Tenth"
+          }
+          else if (ari > 10 && ari <= 11 ){
+           return "Eleventh"
+          }
+          else if (ari > 11 && ari <= 12 ){
+           return "Twelfth"
+          }
+          else if (ari > 12 && ari <= 13 ){
+           return "College Student"
+          }
+          else return "Professor"
+}
+
+
+
+
+// count characters and pass to charNum counter
+// https://www.codexworld.com/live-character-counter-javascript/
+const observer = new MutationObserver(
+function countChars(){
+    // console.log(element.innerHTML.length)
+    var sentences = element.innerHTML.split(". ").length
+    var words = element.innerHTML.split(" ").length
+    var chars = element.innerHTML.match(/[a-zA-Z]/g).length;
+    var ari = Math.round(((4.71 * (chars / words)) + (0.5 * (words/sentences)) - 21.43) * 10) / 10
+    // console.log(chars)
+    var grade = gradeLevel(ari)    
+
+    document.getElementById("charNum").innerHTML = chars + '<br>' + words + '<br>' + sentences + '<br>' + ari + '<br>' + grade
+
+})
+
+observer.observe(element, {subtree: true, childList: true});
+
+// observer two
+const observerTwo = new MutationObserver(
+function countCharsTwo(){
+    // console.log(element.innerHTML.length)
+    var sentences = elementTwo.innerHTML.split(". ").length
+    var words = elementTwo.innerHTML.split(" ").length
+    var chars = elementTwo.innerHTML.match(/[a-zA-Z]/g).length;
+    var ari = Math.round(((4.71 * (chars / words)) + (0.5 * (words/sentences)) - 21.43) * 10) / 10
+    var grade = gradeLevel(ari)  
+    // console.log(chars)
+    document.getElementById("charNumTwo").innerHTML = chars + '<br>' + words + '<br>' + sentences + '<br>' + ari + '<br>' + grade
+
+})
+
+observerTwo.observe(elementTwo, {subtree: true, childList: true});
+
+
+</script>
+

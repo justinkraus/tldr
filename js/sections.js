@@ -1026,7 +1026,7 @@ if (document.getElementById('container-2-1').className == "graph-scroll-active")
         // .attr("text-anchor", "end")
         .attr("x", 0)
         .attr("y", 0-margin2.top/2)
-        .text("High School Student Reading Proficiency by Media Variety")
+        .text("Student Reading Proficiency by Media Variety")
         .attr("font-family", "Domine")
         .style('font-size', "1.5em")
         .attr("class", "barGrid");
