@@ -196,14 +196,14 @@ function render(){
 
   // gridlabels dataset
   // keynote, changed fontsize from .66 to 1em 
-  var gridLabelData = [{"group": "level" ,"labelNum": 1, "x": 0, "y": .5, "fill": "darkgrey", "fontsize": "1em", "text": "Post-graduate"},
-                       {"group": "level" ,"labelNum": 2, "x": 1, "y": .5, "fill": "darkgrey", "fontsize": "1em", "text": "Graduate"},
-                       {"group": "level" ,"labelNum": 3, "x": 2, "y": .5, "fill": "darkgrey", "fontsize": "1em", "text": "College"},
-                       {"group": "level" ,"labelNum": 4, "x": 3, "y": .5, "fill": "darkgrey", "fontsize": "1em", "text": "H.S. Senior"},
-                       {"group": "level" ,"labelNum": 5, "x": 4, "y": .5, "fill": "darkgrey", "fontsize": "1em", "text": "H.S. Freshman"},
-                       {"group": "level" ,"labelNum": 6, "x": 5, "y": .5, "fill": "darkgrey", "fontsize": "1em", "text": "Middle School"},
+  var gridLabelData = [{"group": "level" ,"labelNum": 1, "x": 0, "y": .5, "fill": "darkgrey", "fontsize": ".9em", "text": "Post-graduate"},
+                       {"group": "level" ,"labelNum": 2, "x": 1, "y": .5, "fill": "darkgrey", "fontsize": ".9em", "text": "Graduate"},
+                       {"group": "level" ,"labelNum": 3, "x": 2, "y": .5, "fill": "darkgrey", "fontsize": ".9em", "text": "College"},
+                       {"group": "level" ,"labelNum": 4, "x": 3, "y": .5, "fill": "darkgrey", "fontsize": ".9em", "text": "H.S. Senior"},
+                       {"group": "level" ,"labelNum": 5, "x": 4, "y": .5, "fill": "darkgrey", "fontsize": ".9em", "text": "H.S. Freshman"},
+                       {"group": "level" ,"labelNum": 6, "x": 5, "y": .5, "fill": "darkgrey", "fontsize": ".9em", "text": "Middle School"},
                        {"group": "danger" ,"labelNum": 7, "x": 2.5, "y": 1.2, "fill": "Coral", "fontsize": "1.25em", "text": "Readable"},
-                       {"group": "danger" ,"labelNum": 7, "x": 2.5, "y": 1.4, "fill": "Coral", "fontsize": ".9em", "text": "Threshold for General Population"},]
+                       {"group": "danger" ,"labelNum": 7, "x": 2.5, "y": 1.5, "fill": "Coral", "fontsize": ".9em", "text": "Threshold for General Population"},]
 
   svg1.selectAll('g')
   .select('g')
@@ -620,7 +620,7 @@ svg2.append("text")
     .attr("y", 0-margin2.top/2)
     .text("High School Senior Reading Comprehension")
     .attr("font-family", "Domine")
-    .style('font-size', "1.5em")
+    .style('font-size', "1.25em")
     .attr("class", "chartlabel");
 
 
@@ -896,7 +896,7 @@ if (document.getElementById('container-2-1').className == "graph-scroll-active")
         .attr("y", 0-margin2.top/2)
         .text("High School Seniors Who Read for Fun")
         .attr("font-family", "Domine")
-        .style('font-size', "1.5em")
+        .style('font-size', "1.25em")
         .attr("class", "lolliGrid");
 
   }
@@ -1026,9 +1026,9 @@ if (document.getElementById('container-2-1').className == "graph-scroll-active")
         // .attr("text-anchor", "end")
         .attr("x", 0)
         .attr("y", 0-margin2.top/2)
-        .text("Student Reading Proficiency by Media Variety")
+        .text("Reading Proficiency by Media Variety")
         .attr("font-family", "Domine")
-        .style('font-size', "1.5em")
+        .style('font-size', "1.25em")
         .attr("class", "barGrid");
 
   // legends, originally in keynote but now in side-text
@@ -1346,7 +1346,7 @@ svg3.selectAll('text')
 //                  {"levelNumber":2, "text": "How words relate to one another"},
 //                  {"levelNumber":3, "text": "Integrate with prior knowledge"}]
 
-var defs = [{"levelNumber":1, "text": "Define words and how they relate to one another"},
+var defs = [{"levelNumber":1, "text": "Define words and relate to one another"},
                  {"levelNumber":2, "text": "Connect words to form ideas"},
                  {"levelNumber":3, "text": "Integrate new ideas with prior knowledge"}]
 
@@ -1728,7 +1728,7 @@ if (document.getElementById('container-3-2').className == "graph-scroll-active")
 
 
 //lines transitions
-linesOP = [0,0,0,0,0,1,1,1,1,0]
+linesOP = [0,0,0,0,0,1,1,1,0,0]
 
 var levelexs = svg3.selectAll(".readinglines")
 

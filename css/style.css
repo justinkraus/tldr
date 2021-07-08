@@ -372,16 +372,24 @@ p {
   font-size: 90%;
   }
 
+  .impactText {
+  margin: auto 5vw auto 5vw;
+  height:50vh;
+  font-size: 70%;
+}
+
   #graph{
     width: 100%;
     margin-left: 0px;
+    margin-right: 0px;
     float: none;
+    top: 10%;
   }
 
   #sections{
     width: auto;
     position: relative;
-    margin: 0px auto; 
+    margin: 0px 0px; 
   }
 
   #sections > div{
@@ -424,16 +432,32 @@ p {
   }
 
   .impactText {
-  margin: auto 14vw auto 10vw;
+  margin: auto 5vw auto 5vw;
   height:50vh;
   font-size: 70%;
 }
 
   #graph{
-    width: 100%;
+    width: 99%;
     margin-left: 0px;
+    margin-right: 0px;
     float: none;
+    top: 10%; 
   }
+
+  svg{
+  width: 100%;
+}
+
+/*  #graph{
+  margin-right: 5vw;
+  margin-left: 42.5vw;
+  width: 50vw;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 5%; 
+  float: left;
+}*/
 
   #sections{
     width: auto;
@@ -443,7 +467,7 @@ p {
 
   #sections > div{
     background: rgba(255,255,255,.99);
-    padding: 10px;
+    /*padding: 10px;*/
 /*    border-top: 1px solid;
     border-bottom: 1px solid;*/
     margin-bottom: 80vh;
